@@ -1,0 +1,24 @@
+{
+  "author": "Maciej Jaskuła",
+  "name": "angularjs-sketch-draw",
+  "description": "angular-sketch-draw allows you to create canvases upon which user can draw",
+  "version": "0.0.1",
+  "main": [
+    "src/angularjs-sketch-draw.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.17",
+    "angular-mocks": "~1.2.17"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}

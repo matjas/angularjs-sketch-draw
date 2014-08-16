@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="angularjsSketch">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Demo angularjs-sketchDraw</title>
+    <link rel='stylesheet' href="../src/angularjs-sketch.css" />
+    <script src="../bower_components/angular/angular.js" ></script>
+    <script src="../src/angularjs-sketch-draw.js"></script>
+    <script>
+
+
+        angular.module('angularjsSketch',['angularjs.sketch.draw'])
+                .controller('angularJsSketchController',function($scope){
+                    var demo = this;
+                    //canvas settings
+                    demo.isEditable=false;
+                    demo.isMapLocation=false;
+
+                    demo.currentMember = { name:'Room',
+                                            id:77,
+                                            map:{
+                                                name:"map1",
+                                                url:"map.jpg"
+                                            },
+                                            shape:[160, 211, 357, 148, 199, 99, 160, 211],
+                                            roomType:{
+                                                type:'Surgery room'
+                                            },
+                                            children:[]
+                    };
+
+
+
+                    demo.setCanvas=function(currentMember){
+                        var _this=this;
+
+                        demo.currentMember=currentMember;
+                        demo.isMapLocation=false;
+
+                        if(currentMember.map.url==null){
+                            demo.isEditable = false;
+                            demo.bgImg=null;
+                            return
+                        }
+
+
+                        var img = new Image();
+                        img.onload = function(){
+
+                            $scope.$apply(function(){
+                                        demo.imgWidth=img.width;
+                                        demo.imgHeight=img.height;
+                                        demo.bgImg=img;
+
+                                    }
+                            );
+                        };
+
+
+                        demo.isEditable = true;
+
+
+                        img.src=currentMember.map.url;
+
+
+                    };
+
+                    demo.setCanvas(demo.currentMember);
+
+        })
+
+    </script>
+    <style>
+        .col{float:left;padding:20px;width:300px;}
+        .container{width:100%;}
+        .code{background-color:#F4F4F4}
+    </style>
+</head>
+<body>
+
+        <div class="container" data-ng-controller="angularJsSketchController as demo">
+            <h2>Demo angularjs-sketchDraw</h2>
+
+
+            <div class="col">
+                <div class="image-preview">
+                    <mj-canvas-draw  data-canvas-data="demo.currentMember" data-is-map-location="demo.isMapLocation" data-img-width="{{demo.imgWidth}}" data-img-height="{{demo.imgHeight}}" data-bg-img="demo.bgImg" data-is-editable="demo.isEditable"   />
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+</body>
+</html>

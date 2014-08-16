@@ -1,0 +1,13 @@
+
+<div class="canvas-container height-100" >
+    <div id="reset-control" class="custom-ctrl-map" ng-show="isEditable">
+        <button  class="reset-btn btn btn-default" href="" data-ng-click="resetPolygon()"><i class="icn-remove"></i></button>
+        <!--<button ng-hide="isMapLocation" ng-class="{'active':displayRooms}" class="reset-btn btn btn-default" data-ng-click="toggleRooms()"><i class="icon-building"></i></button>-->
+        <button  ng-class="{'active':isEditBtnActive}" class="reset-btn btn btn-default" data-ng-click="toggleEditMode()"><i class="icn-polygon"></i></button>
+        <span ng-hide="isMapLocation" ng-bind="objectInfo.text"></span>
+    </div>
+
+    <div class="canvas-box height-80">
+        <canvas    ng-style="imageBgStyle" height="{{imgHeight}}" width="{{imgWidth}}" dXata-ng-style="{'width':imgWidth,'height':imgHeight}" hXeight="500" wXidth="500" ></canvas>
+    </div>
+</div>
